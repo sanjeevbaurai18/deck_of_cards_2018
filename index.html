@@ -1,0 +1,104 @@
+<!doctype html>
+<html ng-app="CardDeck">
+<head>
+  <meta charset="utf-8">
+ 
+
+  <!-- Jasmine 2.0 dependancies -->
+ 
+  <link rel="shortcut icon" type="image/png" href="jasmine/lib/jasmine-2.4.1/jasmine_favicon.png">
+   <link rel="stylesheet" type="text/css" href="jasmine/lib/jasmine-2.4.1/jasmine.css">
+ 
+ 
+ 
+   <script type="text/javascript" src="jasmine/lib/jasmine-2.4.1/jasmine.js"></script>
+   <script type="text/javascript" src="jasmine/lib/jasmine-2.4.1/jasmine-html.js"></script>
+   <script type="text/javascript" src="jasmine/lib/jasmine-2.4.1/boot.js"></script>
+ 
+
+  <!-- AngularJS dependancies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+  <!-- source files -->
+  <script type="text/javascript" src="js/ranks.js"></script>
+  <script type="text/javascript" src="js/suits.js"></script>
+  <script type="text/javascript" src="js/deck.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+ <link rel="shortcut icon" href="favicon.ico">
+ <title>Deck of Cards</title>
+  <!-- Optional theme -->
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- spec file -->
+  <script type="text/javascript" src="js/deckSpec.js"></script>
+
+</head>
+<body class="container-fluid" ng-controller="DeckController as deck">
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img alt="Magician" height="20" src="img/4suits.png"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <button type="button" class="btn btn-success navbar-btn navbar-left" ng-disabled="!deck.cards.deck.length > 0" ng-click="deck.cards.shuffle()">Shuffle</button>
+          <button type="button" class="btn btn-success navbar-btn navbar-left" ng-disabled="!deck.cards.deck.length > 0" ng-click="deck.cards.sort()">Sort</button>
+          <form class="navbar-form navbar-left" role="draw">
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="Draw" ng-disabled="!deck.cards.deck.length > 0" ng-model="deckNumber" min="1" max="deck.cards.deck.length">
+            </div>
+            <button type="button" class="btn btn-success" ng-disabled="!deck.cards.deck.length > 0" ng-click="deck.drawn.put(deck.cards.draw(deckNumber))">Draw</button>
+          </form>
+          <form class="navbar-form navbar-right" role="draw">
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="Put back" ng-disabled="!deck.drawn.deck.length > 0" ng-model="drawNumber" min="1" max="deck.drawn.deck.length">
+            </div>
+            <button type="button" class="btn btn-success" ng-disabled="!deck.drawn.deck.length > 0" ng-click="deck.cards.put(deck.drawn.draw(drawNumber))">Put back</button>
+          </form>
+          <button type="button" class="btn btn-success navbar-btn navbar-right" ng-disabled="!deck.drawn.deck.length > 0" ng-click="deck.drawn.sort()">Sort</button>
+          <button type="button" class="btn btn-success navbar-btn navbar-right" ng-disabled="!deck.drawn.deck.length > 0" ng-click="deck.drawn.shuffle()">Shuffle</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default" ng-show="deck.cards.deck.length > 0">
+        <div class="panel-heading">Deck of cards</div>
+        <div class="panel-body">
+        	 <div class="card"  ng-class="[{'card-red' : card.isRed()}, { 'card-back':clicked}]" ng-click="clicked= !clicked"  ng-repeat="card in deck.cards.deck">
+            {{ card.showUnicode() }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" >
+      <div class="panel panel-default" ng-show="deck.drawn.deck.length > 0">
+        <div class="panel-heading">Drawn cards</div>
+        <div class="panel-body">
+          <div class="card" ng-class="[{'card-red' : card.isRed()}, { 'card-back':clicked}]" ng-click="clicked= !clicked" ng-repeat="card in deck.drawn.deck">
+            {{ card.showUnicode() }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

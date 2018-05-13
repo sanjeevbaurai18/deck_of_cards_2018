@@ -1,0 +1,75 @@
+.card {
+  font-size : 160px;
+  line-height: 140px;
+  float : left;
+  cursor:pointer;
+  user-select: none;
+  position: relative;
+  padding-bottom:10px;
+  border: solid 2px #fff;
+  color:#000;	
+}
+.card:hover{
+	 bottom: 2px;
+}
+
+.card-red {
+  color : red;
+}
+
+..navbar-inverse{
+	background-color: #5A5A55;
+    border-color: transparent;
+}
+.navbar-inverse {
+    background-color: #5A5A55;
+    border-color: transparent;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #5A5A55;
+}
+.btn-success {
+    color: #ffffff;
+    background-color:#5B5950;
+    border-color: #5B5950;
+}
+.btn-success:hover {
+    color: #000;
+    background-color: #EDF0EF;
+    border-color: #EDF0EF;
+}
+.btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+   color: #000;
+    background-color: #EDF0EF;
+    border-color: #EDF0EF;
+}
+.btn-success:focus, .btn-success.focus {
+    color: #000;
+    background-color: #EDF0EF;
+    border-color: #EDF0EF;
+}
+.btn-success.disabled:hover, .btn-success[disabled]:hover, fieldset[disabled] .btn-success:hover, .btn-success.disabled:focus, .btn-success[disabled]:focus, fieldset[disabled] .btn-success:focus, .btn-success.disabled.focus, .btn-success[disabled].focus, fieldset[disabled] .btn-success.focus {
+    color: #000;
+    background-color: #EDF0EF;
+    border-color: #EDF0EF;
+}
+.btn-success:active:hover, .btn-success.active:hover, .open>.dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open>.dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open>.dropdown-toggle.btn-success.focus {
+   color: #000;
+    background-color: #EDF0EF;
+    border-color: #EDF0EF;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+     outline: none;
+}
+
+.card-back{
+	background-image: -webkit-gradient(radial, center center, 20, center center, 80, from(#0e480e), color-stop(0.4, #363), to(#030));
+    color: #030;
+    background-position: 53% 55%;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height:auto;
+}
+
